@@ -7,7 +7,7 @@ class Materia(models.Model):
 
 class Nota(models.Model):
     pontuacao = models.PositiveIntegerField()
-    materia = models.ForeignKey(Materia)
+    materia = models.ForeignKey(Materia, on_delete=models.PROTECT)
     aprovado = models.BooleanField(default=False)
 
 
@@ -15,4 +15,4 @@ class Aluno(models.Model):
     nome = models.CharField(max_length=64)
     cpf = models.CharField(max_length=11)
     nascimento = models.DateField()
-    nota = models.ManyToManyField(Nota)
+    notas = models.ManyToManyField(Nota)
